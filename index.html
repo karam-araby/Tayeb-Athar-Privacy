@@ -49,6 +49,30 @@
       font-size: 26px;
       letter-spacing: 0.4px;
     }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn.active {
+      background: rgba(20, 184, 166, 0.16);
+      color: #67e8f9;
+      border: 1px solid rgba(103, 232, 249, 0.35);
+    }
     .tag {
       display: inline-flex;
       align-items: center;
@@ -80,6 +104,8 @@
       border-radius: var(--radius);
       padding: 14px 16px;
     }
+    .lang { display: none; }
+    .lang.active { display: block; }
     @media (min-width: 720px) {
       main { padding: 40px 36px; }
       .dual { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -90,11 +116,17 @@
   <main>
     <header>
       <div class="tag">آخر تحديث: 27 ديسمبر 2025</div>
-      <h1>سياسة الخصوصية - تطبيق طيب الأثر (Tayeb Athar)</h1>
-      <p>نلتزم بحماية خصوصية مستخدمي التطبيق، وتوضح هذه السياسة كيفية جمع المعلومات واستخدامها وحمايتها.</p>
+      <div class="lang-switch" aria-label="language switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+      </div>
+      <h1 class="lang active" data-lang="ar">سياسة الخصوصية - تطبيق طيب الأثر (Tayeb Athar)</h1>
+      <h1 class="lang" data-lang="en">Privacy Policy - Tayeb Athar</h1>
+      <p class="lang active" data-lang="ar">نلتزم بحماية خصوصية مستخدمي التطبيق، وتوضح هذه السياسة كيفية جمع المعلومات واستخدامها وحمايتها.</p>
+      <p class="lang" data-lang="en">We are committed to protecting your privacy. This policy explains how we collect, use, and safeguard your data.</p>
     </header>
 
-    <section class="dual">
+    <section class="dual lang active" data-lang="ar">
       <div class="card">
         <h2>١. البيانات التي نجمعها</h2>
         <ul>
@@ -112,7 +144,25 @@
       </div>
     </section>
 
-    <section class="dual">
+    <section class="dual lang" data-lang="en">
+      <div class="card">
+        <h2>1. Data We Collect</h2>
+        <ul>
+          <li>Basic technical data: device type, OS version, interface language.</li>
+          <li>Adhkar reminders: times you select for notifications (stored locally on your device).</li>
+          <li>No personal content or location is collected unless you use features that require it (e.g., Qibla).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>2. Device Permissions</h2>
+        <ul>
+          <li>Location: only to calculate Qibla direction; never sent to any server.</li>
+          <li>Notifications: to deliver adhkar reminders you configure.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="dual lang active" data-lang="ar">
       <div class="card">
         <h2>٣. استخدام البيانات</h2>
         <ul>
@@ -126,7 +176,21 @@
       </div>
     </section>
 
-    <section class="dual">
+    <section class="dual lang" data-lang="en">
+      <div class="card">
+        <h2>3. How We Use Data</h2>
+        <ul>
+          <li>To operate app features (Qibla, notifications, mini Hijri calendar).</li>
+          <li>To improve performance and troubleshoot in aggregate, without identifying users.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>4. Data Sharing</h2>
+        <p>We do not sell or share your data for marketing. We may use third-party infrastructure (e.g., Firebase) while preserving privacy.</p>
+      </div>
+    </section>
+
+    <section class="dual lang active" data-lang="ar">
       <div class="card">
         <h2>٥. التخزين والأمان</h2>
         <ul>
@@ -143,15 +207,49 @@
       </div>
     </section>
 
-    <section class="card">
+    <section class="dual lang" data-lang="en">
+      <div class="card">
+        <h2>5. Storage and Security</h2>
+        <ul>
+          <li>Your settings (e.g., reminder times) are stored locally on your device.</li>
+          <li>We use encrypted connections (HTTPS) for any network communication.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>6. Your Rights</h2>
+        <ul>
+          <li>You can revoke permissions from system settings (location, notifications).</li>
+          <li>You can delete the app to remove locally stored data.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card lang active" data-lang="ar">
       <h2>٧. التحديثات والتواصل</h2>
       <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. سنعرض تاريخ آخر تحديث أعلى الصفحة. للاستفسارات، راسلنا عبر متجر التطبيق أو قنوات الدعم الرسمية.</p>
     </section>
 
-    <section class="card">
-      <h2>English Summary</h2>
-      <p>This privacy policy explains how Tayeb Athar collects, uses, and protects your data. We collect minimal technical data, use location only for Qibla, and store reminder settings locally. We do not sell or share your data for marketing. You can revoke permissions anytime from your device settings.</p>
+    <section class="card lang" data-lang="en">
+      <h2>7. Updates and Contact</h2>
+      <p>We may update this policy from time to time. The last update date appears above. For inquiries, contact us via the app store page or official support channels.</p>
     </section>
   </main>
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll('.lang-btn');
+      const blocks = document.querySelectorAll('.lang');
+      const setLang = (lang) => {
+        buttons.forEach((btn) => btn.classList.toggle('active', btn.dataset.lang === lang));
+        blocks.forEach((el) => el.classList.toggle('active', el.dataset.lang === lang));
+        localStorage.setItem('privacy_lang', lang);
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = lang;
+      };
+      const saved = localStorage.getItem('privacy_lang');
+      const initial = saved === 'en' ? 'en' : 'ar';
+      setLang(initial);
+      buttons.forEach((btn) => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+    })();
+  </script>
 </body>
 </html>
